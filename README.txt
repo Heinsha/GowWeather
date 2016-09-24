@@ -1,4 +1,4 @@
-1) Paste the "Gow Weather" folder to 'C:\Roof'.
+1) Paste the 'Gow Weather' folder to 'C:\Roof'.
 	- Should look like this: 'C:\Roof\Gow Weather\*files*'
 
 2) Right click "Weather.vbs" and hover over "Send to", click "Desktop (create shortcut)".
