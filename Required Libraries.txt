@@ -1,0 +1,4 @@
+https://www.python.org/downloads/release/python-352/
+
+http://mcsp.wartburg.edu/zelle/python/graphics.py
+	save to the python program files
