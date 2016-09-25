@@ -23,56 +23,64 @@ feelslike_f = parsed_json['current_observation']['feelslike_f']
 temp_c = parsed_json['current_observation']['temp_c']
 feelslike_c = parsed_json['current_observation']['feelslike_c']
 
+    ##########
+fc1Chk = parsed_json['forecast']['txt_forecast']['forecastday'][0]['title']
 fc1Src = parsed_json['forecast']['txt_forecast']['forecastday'][0]['fcttext']
 fc2Src = parsed_json['forecast']['txt_forecast']['forecastday'][1]['fcttext']
 fc3Src = parsed_json['forecast']['txt_forecast']['forecastday'][2]['fcttext']
+fc4Src = parsed_json['forecast']['txt_forecast']['forecastday'][3]['fcttext']
+if fc1Src is "Monday" or "Tuesday" or "Wednesday" or "Thursday" or "Friday" or "Saturday" or "Sunday":
+        fc1 = fc1Src
+        fc2 = fc2Src
+        fc3 = fc3Src
+else:
+        fc1 = fc2Src
+        fc2 = fc3Src
+        fc3 = fc4Src
+
+    ###
 timeNow = float(time.strftime('%H%M%S'))
 
-# UI
+# UI CURRENT WEATHER
 win = GraphWin('Gow Weather', 1000, 300)
 location = Text(Point(500, 20), locationSource)
 temp = Text(Point(500, 60), "Temperature:   " + str(temp_f) + "Fº   /   " + str(temp_c) + "Cº")
 temp2 = Text(Point(500, 80), "Feels like:        " + str(feelslike_f) + "Fº   /   " + str(feelslike_c) + "Cº")
 weather = Text(Point(500, 100), "Current conditions:   " + str(weatherSource))
 humidity = Text(Point(500, 120), "Humidity:   " + str(humiditySource))
+
+# UI FORECAST
 forecast = Text(Point(500, 160), "Forecast:")
 sep = Text(Point(500, 163), "_____________________________________________________________")
-forecastToday = Text(Point(500, 185), "Today:   " + textwrap.fill(fc1Src,120))
-forecastTonight1 = Text(Point(500, 185), "Tonight:   " + textwrap.fill(fc2Src,120))
-forecastTonight2 = Text(Point(500, 205), "Tonight:   " + textwrap.fill(fc2Src,120))
-forecastTomorrow = Text(Point(500, 205), "Tomorrow:   " + textwrap.fill(fc3Src,120))
-forecastTodayLong = Text(Point(500, 205), "Today:   " + textwrap.fill(fc1Src,120))
-forecastTonight1Long = Text(Point(500, 205), "Tonight:   " + textwrap.fill(fc2Src,120))
-forecastTonight2Long = Text(Point(500, 245), "Tonight:   " + textwrap.fill(fc2Src,120))
-forecastTomorrowLong = Text(Point(500, 245), "Tomorrow:   " + textwrap.fill(fc3Src,120))
 
-    # UI - IF STATEMENT
+    ###
 if timeNow < 180000:
-    if len(str(forecastToday)) > 120 and len(str(forecastTonight2)) > 120:
-        forecastTodayLong.draw(win)
-        forecastTonight2Long.draw(win)
-    elif len(str(forecastToday)) > 120:
-        forecastTodayLong.draw(win)
-        forecastTonight2.draw(win)
-    elif len(str(forecastTonight2)) > 120:
-        forecastToday.draw(win)
-        forecastTonight2Long.draw(win)
-    else:
-        forecastToday.draw(win)
-        forecastTonight2.draw(win)
+	forecast1str = "Today:   " + textwrap.fill(fc1,120)
+	forecast2str = "Tonight:   " + textwrap.fill(fc2,120)
+	forecast3str = "Tomorrow:   " + textwrap.fill(fc3,120)
 else:
-    if len(str(forecastTonight1)) > 120 and len(str(forecastTomorrow)) > 120:
-        forecastTonight1Long.draw(win)
-        forecastTomorrowLong.draw(win)
-    elif len(str(forecastTonight1)) > 120:
-        forecastTonight1Long.draw(win)
-        forecastTomorrow.draw(win)
-    elif len(str(forecastTomorrow)) > 120:
-        forecastTonight1.draw(win)
-        forecastTomorrowLong.draw(win)
-    else:
-        forecastTonight1.draw(win)
-        forecastTomorrow.draw(win)
+	forecast1str = "Tonight:   " + textwrap.fill(fc2,120)
+	forecast2str = "Tomorrow:   " + textwrap.fill(fc3,120)
+	forecast3str = "Tomorrow Night:   " + textwrap.fill(fc4,120)
+
+    ###
+if len(forecast1str) > 120:
+        offset1 = 205
+else:
+        offset1 = 185
+if len(forecast2str) > 120:
+        offset2 = 245
+else:
+        offset2 = 205
+if len(forecast3str) > 120:
+        offset3 = 265
+else:
+        offset3 = 225
+
+    ###
+forecast1 = Text(Point(500, offset1), forecast1str)
+forecast2 = Text(Point(500, offset2), forecast2str)
+forecast3 = Text(Point(500, offset3), forecast3str)
 
 # DRAW
 location.draw(win)
@@ -82,3 +90,6 @@ weather.draw(win)
 humidity.draw(win)
 forecast.draw(win)
 sep.draw(win)
+forecast1.draw(win)
+forecast2.draw(win)
+forecast3.draw(win)
