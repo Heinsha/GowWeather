@@ -47,22 +47,13 @@ sep = Text(Point(500, 163), "___________________________________________________
 
 # IF STATEMENTS _______________________________________________
 if fc1Chk is "Monday" or "Tuesday" or "Wednesday" or "Thursday" or "Friday" or "Saturday" or "Sunday":
-        fcText1 = "Today:     "
-        fcText2 = "Tonight:     "
-        fcText3 = "Tomorrow:     "
+        forecast1str = "Today:     " + textwrap.fill(fc1Src,140)
+        forecast2str = "Tonight:     " + textwrap.fill(fc2Src,140)
+        forecast3str = "Tomorrow:     " + textwrap.fill(fc3Src,140)
 else:
-        fcText1 = "Tonight:     "
-        fcText2 = "Tomorrow:     "
-        fcText3 = "Tomorrow Night:     "
-###
-if timeNow < 180000:
-	forecast1str = fcText1 + textwrap.fill(fc1Src,140)
-	forecast2str = fcText2 + textwrap.fill(fc2Src,140)
-	forecast3str = fcText3 + textwrap.fill(fc3Src,140)
-else:
-	forecast1str = fcText1 + textwrap.fill(fc1Src,140)
-	forecast2str = fcText2 + textwrap.fill(fc2Src,140)
-	forecast3str = fcText3 + textwrap.fill(fc3Src,140)
+        forecast1str = "Tonight:     " + textwrap.fill(fc1Src,140)
+        forecast2str = "Tomorrow:     " + textwrap.fill(fc2Src,140)
+        forecast3str = "Tomorrow Night:     " + textwrap.fill(fc3Src,140)
 ###
 if len(forecast1str) > 140:
         offset1 = 195
