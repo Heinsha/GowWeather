@@ -47,31 +47,31 @@ sep = Text(Point(500, 163), "___________________________________________________
 
 # IF STATEMENTS _______________________________________________
 if fc1Chk is "Monday" or "Tuesday" or "Wednesday" or "Thursday" or "Friday" or "Saturday" or "Sunday":
-        forecast1str = "Today:     " + textwrap.fill(fc1Src,140)
-        forecast2str = "Tonight:     " + textwrap.fill(fc2Src,140)
-        forecast3str = "Tomorrow:     " + textwrap.fill(fc3Src,140)
+        forecast1str = "Today:     " + textwrap.fill(fc1Src,120)
+        forecast2str = "Tonight:     " + textwrap.fill(fc2Src,120)
+        forecast3str = "Tomorrow:     " + textwrap.fill(fc3Src,120)
 else:
-        forecast1str = "Tonight:     " + textwrap.fill(fc1Src,140)
-        forecast2str = "Tomorrow:     " + textwrap.fill(fc2Src,140)
-        forecast3str = "Tomorrow Night:     " + textwrap.fill(fc3Src,140)
+        forecast1str = "Tonight:     " + textwrap.fill(fc1Src,120)
+        forecast2str = "Tomorrow:     " + textwrap.fill(fc2Src,120)
+        forecast3str = "Tomorrow Night:     " + textwrap.fill(fc3Src,120)
 ###
-if len(forecast1str) > 140:
+if len(forecast1str) > 120:
         offset1 = 195
 else:
         offset1 = 185
 ###
-if len(forecast2str) > 140:
+if len(forecast2str) > 120:
         offset2 = 215
-elif len(forecast2str) > 140 and offset1 is 195:
+elif len(forecast2str) > 120 and offset1 is 195:
                 offset2 = 225
 else:
         offset2 = 205
 ###
-if len(forecast3str) > 140:
+if len(forecast3str) > 120:
         offset3 = 235
-elif len(forecast3str) > 140 and offset2 is 215:
+elif len(forecast3str) > 120 and offset2 is 215:
                 offset3 = 245
-elif len(forecast3str) > 140 and offset2 is 225:
+elif len(forecast3str) > 120 and offset2 is 225:
                 offset3 = 255
 else:
         offset3 = 225
