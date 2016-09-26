@@ -4,6 +4,7 @@ import json
 from graphics import GraphWin, Text, Point
 import time
 import textwrap
+import math
 
 # API CALLER _________________________________________________
 API_KEY = 'c41b99facc8c41aa'
@@ -56,25 +57,33 @@ else:
         forecast3str = "Tomorrow Night:     " + textwrap.fill(fc3Src,120)
 ###
 if len(forecast1str) > 120:
-        offset1 = 195
+		vert1 = 195
 else:
-        offset1 = 185
+		vert1 = 185
 ###
 if len(forecast2str) > 120:
-        offset2 = 215
-elif len(forecast2str) > 120 and offset1 is 195:
-                offset2 = 225
+		vert2 = 225
 else:
-        offset2 = 205
+		vert2 = 205
 ###
 if len(forecast3str) > 120:
-        offset3 = 235
-elif len(forecast3str) > 120 and offset2 is 215:
-                offset3 = 245
-elif len(forecast3str) > 120 and offset2 is 225:
-                offset3 = 255
+		vert3 = 255
 else:
-        offset3 = 225
+		vert3 = 225
+###
+if len(forecast1str) < 120:
+		offset1 = vert1
+else:
+		offset1 = vert1
+if len(forecast2str) < 120:
+		offset2 = offset1 + 20
+else:
+		offset2 = offset1 + 40
+if len(forecast3str) < 120:
+		offset3 = offset2 + 20
+else:
+		offset3 = offset2 + 40
+
 
 #______________________________________________________________
 forecast1 = Text(Point(500, offset1), forecast1str)

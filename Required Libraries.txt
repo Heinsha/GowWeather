@@ -3,4 +3,5 @@ https://www.python.org/downloads/release/python-352/
 http://mcsp.wartburg.edu/zelle/python/graphics.py
 	save to the python program files
 
-	-- OR after installing python, in Windows PowerShell type: pip install graphics
+	-- OR after installing python, in Windows PowerShell type:
+			pip install graphics
